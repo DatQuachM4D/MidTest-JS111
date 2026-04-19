@@ -1,15 +1,22 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
-import Header from "./Header";
-import Banner from "./Banner";
-import AnimeList from "./AnimeList";
+import Header from "./components/Header";
+import SectionTitle from "./components/SectionTitle";
+import Banner from "./components/Banner";
+import AnimeList from "./components/AnimeList";
+import { animeData } from "./data/animeData";
 
 function App() {
+  const [selectedAnime, setSelectedAnime] = useState(animeData[0]);
+  const animeList = animeData.filter((item) => item.id !== selectedAnime?.id);
+
   return (
-    <div id="page">
-      <Header />
-      <Banner />
+    <div className="bg-[rgba(25,32,38,1)] h-full min-h-screen">
+      <div className="w-[1174px] mx-auto py-6">
+        <Header />
+        <SectionTitle />
+        <Banner anime={selectedAnime} />
+        <AnimeList anime={animeList} onSelect={setSelectedAnime} activeAnimeId={selectedAnime?.id} />
+      </div>
     </div>
   );
 }
