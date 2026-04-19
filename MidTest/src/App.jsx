@@ -10,7 +10,6 @@ function App() {
     <div id="page">
       <Header />
       <Banner />
-      <AnimeList />
     </div>
   );
 }
